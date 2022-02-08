@@ -1,6 +1,7 @@
 package com.example.flixster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.adapters.MovieAdapter;
+import com.example.flixster.databinding.ActivityMainBinding;
 import com.example.flixster.models.Movie;
 
 import org.json.JSONArray;
@@ -24,7 +26,8 @@ import okhttp3.Headers;
 
 
 
-//current time 6 hours
+//week 1 time 6 hours
+//week 2 time 4 hours
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,16 +36,22 @@ public class MainActivity extends AppCompatActivity {
 
     List<Movie> movies;
 
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView rvMovies = findViewById(R.id.rvMovies);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        RecyclerView rvMovies = binding.rvMovies;
 
         movies = new ArrayList<>();
         MovieAdapter movieAdapter = new MovieAdapter(this, movies);
         rvMovies.setAdapter(movieAdapter);
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
+
+        movieAdapter.setActivity(this);
 
         AsyncHttpClient client = new AsyncHttpClient();
 
