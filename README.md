@@ -26,7 +26,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### Notes
 
-Rounded corners on posters resulted in the ImageView stretching across the entire screen, so the height for ivPoster had to be set to a fixed value to prevent this. This may cause image formatting to appear strangly at times.
+Rounded corners on posters resulted in the ImageView stretching across the entire screen, so the height for ivPoster had to be set to a fixed value to prevent this. This may cause image formatting to appear strangely at times.
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
